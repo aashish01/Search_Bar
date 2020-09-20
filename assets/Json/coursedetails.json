@@ -1,0 +1,66 @@
+{
+    "courseDetails":[
+        {
+            "title":"Python for Everyone",
+            "offeredBy":"Kathmandu University",
+            "aboutCourse":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day.\n\n The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing.",
+            "cards":[
+                {
+                "cardimg":"https://freedesignfile.com/upload/2012/09/Internet-concept-4.jpg",
+                "cardTitle":"100% Online",
+                "cardSubtitle":"vbcxvbxvbcxvxczbcvnzcxcvzxbnv"
+            },
+            {
+                "cardimg":"https://cdn3.vectorstock.com/i/1000x1000/30/27/date-and-time-icon-vector-6533027.jpg",
+                "cardTitle":"Flexiable deadlines",
+                "cardSubtitle":"vbcxvbxvbcxvxczbcvnzcxcvzxbnv"
+            },
+            {
+                "cardimg":"https://img.pngio.com/characteristics-of-good-live-chat-software-live-chat-png-300_300.png",
+                "cardTitle":"English",
+                "cardSubtitle":"vbcxvbxvbcxvxczbcvnzcxcvzxbnv"
+            }],
+            "skills":["json","XML","Python Programming","Database (DBMS)"],
+            "specialization":[
+                {
+                    "week":"week1",
+                    "heading":"Introduction",
+                    "body":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                },
+                {
+                    "week":"week2",
+                    "heading":"Variables",
+                    "body":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                },
+                {
+                    "week":"week3",
+                    "heading":"DataTypes",
+                    "body":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                },
+                {
+                    "week":"week4",
+                    "heading":"OOPs",
+                    "body":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                }],
+                "instructor":{
+                    "photo":"https://cdn2.vectorstock.com/i/1000x1000/49/86/man-character-face-avatar-in-glasses-vector-17074986.jpg",
+                    "name":"Aashish Thapa",
+                    "qualification":"BSc (Hons) Computer Science"
+
+                },
+                "askedQuestions":[
+                    {
+                        "question":"Why Python ?",
+                        "answer":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                    },
+                    {
+                        "question":"Scope of Python ?",
+                        "answer":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                    },
+                    {
+                        "question":"Why Python is so popular ?",
+                        "answer":"Generating random paragraphs can be an excellent way for writers to get their creative flow going at the beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This forces the writer to use creativity to complete one of three common writing challenges. The writer can use the paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to incorporate the paragraph into their writing."
+                    }]
+        }
+    ]
+}

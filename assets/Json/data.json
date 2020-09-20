@@ -1,0 +1,36 @@
+{
+    "Browse_cat": [
+        {
+            "Category": "Accounting & Finance",
+            "img": "https://www.pngitem.com/pimgs/m/403-4039144_finance-icon-supply-chain-financing-icon-hd-png.png"
+        },
+        {
+            "Category": "IT & Software",
+            "img": "https://icon-library.com/images/software-icon-images/software-icon-images-21.jpg"
+        },
+        {
+            "Category": "Business",
+            "img": "https://s.pngkit.com/png/small/121-1218900_business-icon-awards-night-2018-ggef-business-to.png"
+        },
+        {
+            "Category": "Design",
+            "img": "https://icon-library.com/images/graphic-design-icon-png/graphic-design-icon-png-10.jpg"
+        },
+        {
+            "Category": "Personal Development",
+            "img": "https://cdn.iconscout.com/icon/premium/png-256-thumb/personal-development-25-986161.png"
+        }
+    ],
+    
+    "Top_search":[
+        {
+            "title": "Python"
+        },
+        {
+            "title": "Flutter"
+        },
+        {
+            "title": "SQL"
+        }
+    ]
+}

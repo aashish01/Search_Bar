@@ -11,12 +11,16 @@ class CourseDetailsPage extends StatefulWidget {
 
 class _CourseDetailsPageState extends State<CourseDetailsPage> {
   CourseDetail course;
+  String title = "";
+  String university = "";
   @override
   void initState() {
     super.initState();
     CourseDetailsProvider().courseDetailsData().then((value) {
       setState(() {
         course = value;
+        title = value.courseDetails[0].title;
+        university = value.courseDetails[0].offeredBy;
       });
     });
   }
@@ -32,7 +36,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
           slivers: <Widget>[
             SliverAppBar(
               title: Text(
-                'Python for EveryOne',
+                title,
                 style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 6,
                   fontWeight: FontWeight.bold,
@@ -63,7 +67,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                         ),
                       ),
                       subtitle: Text(
-                        'University of Wolverhamption',
+                        university,
                         style: TextStyle(
                           fontSize: SizeConfig.safeBlockHorizontal * 3.5,
                           fontWeight: FontWeight.bold,
@@ -120,42 +124,54 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                                 textAlign: TextAlign.justify,
                                 expandText: 'show More',
                                 collapseText: 'Show Less',
-                                maxLines: 6,
+                                maxLines: 5,
                                 style: TextStyle(
                                   fontSize:
                                       SizeConfig.safeBlockHorizontal * 3.6,
                                 ),
                               ),
                             ),
-                            Card(
-                              color: Colors.white10,
-                              elevation: SizeConfig.blockSizeHorizontal * 0,
-                              child: ListTile(
-                                leading: CircleAvatar(
-                                  radius: SizeConfig.blockSizeHorizontal * 5,
-                                  backgroundImage: NetworkImage(course
-                                      .courseDetails[index]
-                                      .cards[index]
-                                      .cardimg),
-                                ),
-                                title: Text(
-                                  course.courseDetails[index].cards[index]
-                                      .cardTitle,
-                                  style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4,
-                                    fontWeight: FontWeight.bold,
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
+                              itemCount:
+                                  course.courseDetails[index].cards.length,
+                              itemBuilder: (context, int card) {
+                                if (card == null) {
+                                  return Container();
+                                }
+                                return Card(
+                                  color: Colors.white10,
+                                  elevation: SizeConfig.blockSizeHorizontal * 0,
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      radius:
+                                          SizeConfig.blockSizeHorizontal * 5,
+                                      backgroundImage: NetworkImage(course
+                                          .courseDetails[index]
+                                          .cards[card]
+                                          .cardimg),
+                                    ),
+                                    title: Text(
+                                      course.courseDetails[index].cards[card]
+                                          .cardTitle,
+                                      style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 4,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    subtitle: Text(
+                                      course.courseDetails[index].cards[card]
+                                          .cardSubtitle,
+                                      style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 3,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                subtitle: Text(
-                                  course.courseDetails[index].cards[index]
-                                      .cardSubtitle,
-                                  style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 3,
-                                  ),
-                                ),
-                              ),
+                                );
+                              },
                             ),
                             Container(
                               margin: EdgeInsets.only(
@@ -170,23 +186,35 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                                 ),
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                left: SizeConfig.screenHeight * 0.03,
-                                right: SizeConfig.screenHeight * 0.03,
-                              ),
-                              child: Wrap(
-                                children: [
-                                  Chip(
-                                    label: Text(
-                                      course.courseDetails[index].skills[index],
-                                    ),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
+                              itemCount:
+                                  course.courseDetails[index].skills.length,
+                              itemBuilder: (context, int skill) {
+                                if (skill == null) {
+                                  return Container();
+                                }
+                                return Container(
+                                  margin: EdgeInsets.only(
+                                    left: SizeConfig.screenHeight * 0.03,
+                                    right: SizeConfig.screenHeight * 0.03,
                                   ),
-                                  SizedBox(
-                                    width: 20.0,
+                                  child: Wrap(
+                                    children: [
+                                      Chip(
+                                        label: Text(
+                                          course.courseDetails[index]
+                                              .skills[skill],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20.0,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                );
+                              },
                             ),
                             Container(
                               margin: EdgeInsets.only(
@@ -203,55 +231,70 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                                 ),
                               ),
                             ),
-                            ExpansionTile(
-                              leading: Padding(
-                                padding: EdgeInsets.only(
-                                  top: SizeConfig.blockSizeHorizontal * 0,
-                                  left: SizeConfig.screenHeight * 0.01,
-                                ),
-                                child: Text(
-                                  course.courseDetails[index]
-                                      .specialization[index].week,
-                                  style: TextStyle(
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              title: Padding(
-                                padding: EdgeInsets.only(
-                                  left: SizeConfig.screenHeight * 0.04,
-                                ),
-                                child: Text(
-                                  course.courseDetails[index]
-                                      .specialization[index].heading,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 4.5),
-                                ),
-                              ),
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    left: SizeConfig.screenHeight * 0.06,
-                                    right: SizeConfig.screenHeight * 0.02,
-                                    bottom: SizeConfig.screenHeight * 0.01,
-                                  ),
-                                  child: Text(
-                                    course.courseDetails[index]
-                                        .specialization[index].body,
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 3,
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
+                              itemCount: course
+                                  .courseDetails[index].specialization.length,
+                              itemBuilder: (context, int speclizations) {
+                                if (speclizations == null) {
+                                  return Container();
+                                }
+                                return ExpansionTile(
+                                  leading: Padding(
+                                    padding: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeHorizontal * 0,
+                                      left: SizeConfig.screenHeight * 0.01,
+                                    ),
+                                    child: Text(
+                                      course.courseDetails[index]
+                                          .specialization[speclizations].week,
+                                      style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 4,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                   ),
-                                )
-                              ],
+                                  title: Padding(
+                                    padding: EdgeInsets.only(
+                                      left: SizeConfig.screenHeight * 0.04,
+                                    ),
+                                    child: Text(
+                                      course
+                                          .courseDetails[index]
+                                          .specialization[speclizations]
+                                          .heading,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  4.5),
+                                    ),
+                                  ),
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: SizeConfig.screenHeight * 0.06,
+                                        right: SizeConfig.screenHeight * 0.02,
+                                        bottom: SizeConfig.screenHeight * 0.01,
+                                      ),
+                                      child: Text(
+                                        course.courseDetails[index]
+                                            .specialization[speclizations].body,
+                                        textAlign: TextAlign.justify,
+                                        style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  3,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
                             ),
                             Container(
                               margin: EdgeInsets.only(
@@ -336,35 +379,46 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                                 ),
                               ),
                             ),
-                            ExpansionTile(
-                              title: Padding(
-                                padding: EdgeInsets.only(
-                                  left: SizeConfig.blockSizeVertical * 0,
-                                ),
-                                child: Text(
-                                  course.courseDetails[index]
-                                      .askedQuestions[index].question,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize:
-                                        SizeConfig.safeBlockHorizontal * 4,
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
+                              itemCount: course
+                                  .courseDetails[index].askedQuestions.length,
+                              itemBuilder: (context, int question) {
+                                if (question == null) {
+                                  return Container();
+                                }
+                                return ExpansionTile(
+                                  title: Padding(
+                                    padding: EdgeInsets.only(
+                                      left: SizeConfig.blockSizeVertical * 0,
+                                    ),
+                                    child: Text(
+                                      course.courseDetails[index]
+                                          .askedQuestions[question].question,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize:
+                                            SizeConfig.safeBlockHorizontal * 4,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeVertical * 2,
-                                    right: SizeConfig.blockSizeVertical * 2,
-                                    bottom: SizeConfig.screenHeight * 0.01,
-                                  ),
-                                  child: Text(
-                                    course.courseDetails[index]
-                                        .askedQuestions[index].answer,
-                                    textAlign: TextAlign.justify,
-                                  ),
-                                )
-                              ],
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: SizeConfig.blockSizeVertical * 2,
+                                        right: SizeConfig.blockSizeVertical * 2,
+                                        bottom: SizeConfig.screenHeight * 0.01,
+                                      ),
+                                      child: Text(
+                                        course.courseDetails[index]
+                                            .askedQuestions[question].answer,
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
                             ),
                           ],
                         ),

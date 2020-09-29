@@ -1,7 +1,7 @@
 import 'package:InternTask/Models/searchCourse.dart';
 import 'package:InternTask/ServiceProvider/SearchPageProvider.dart';
 import 'package:InternTask/pages/CoursePageDetails.dart';
-import 'package:InternTask/pages/courseDetails.dart';
+import 'package:InternTask/pages/courseSearchDetails.dart';
 import 'package:flutter/material.dart';
 import '../size_config/sizeConfig.dart';
 
@@ -23,31 +23,35 @@ class _SearchCourseState extends State<SearchCourse> {
     });
   }
 
+  _buildTagWidget() {
+    List<Widget> choices = List();
+    search.topSearch.forEach((element) {
+      choices.add(Container(
+        child: Wrap(
+          children: [
+            ActionChip(
+              label: Text(element.title),
+              onPressed: () {
+                print('im action');
+              },
+            ),
+            SizedBox(
+              width: SizeConfig.safeBlockVertical * 1.5,
+            ),
+          ],
+        ),
+      ));
+    });
+    return choices;
+  }
+
   Widget getTopSearch() {
     if (search == null) {
       return Container();
     } else {
-      return ListView.builder(
-          shrinkWrap: true,
-          physics: ClampingScrollPhysics(),
-          itemCount: search.topSearch.length,
-          itemBuilder: (BuildContext ctxt, int index) {
-            return Container(
-              child: Wrap(
-                children: [
-                  ActionChip(
-                    label: Text(search.topSearch[index].title),
-                    onPressed: () {
-                      print('im action');
-                    },
-                  ),
-                  SizedBox(
-                    width: SizeConfig.safeBlockVertical * 1.5,
-                  ),
-                ],
-              ),
-            );
-          });
+      return Wrap(
+        children: _buildTagWidget(),
+      );
     }
   }
 
@@ -64,7 +68,7 @@ class _SearchCourseState extends State<SearchCourse> {
               leading: CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                backgroundImage: NetworkImage(search.browseCat[index].img),
+                backgroundImage: NetworkImage(search.browseCat[index].img,scale: 0.3),
               ),
               title: Text(
                 search.browseCat[index].category,
@@ -97,7 +101,9 @@ class _SearchCourseState extends State<SearchCourse> {
           appBar: AppBar(
             iconTheme: new IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
-            leading: IconButton(icon: Icon(Icons.search), onPressed: null),
+            leading: IconButton(icon: Icon(Icons.search), onPressed:(){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CourseDetailsSearch()));
+            }),
             title: Center(
               child: TextFormField(
                 decoration: InputDecoration(
@@ -141,7 +147,7 @@ class _SearchCourseState extends State<SearchCourse> {
                   ),
                   getTopSearch(),
                   SizedBox(
-                    height: SizeConfig.screenHeight * 0.02,
+                    height: SizeConfig.screenHeight * 0.03,
                   ),
                   Container(
                     child: Text(

@@ -1,0 +1,59 @@
+{
+    "searchResult":[
+        {
+            "title": "Java Programming and Software Engineering Fundamnetals",
+            "university": "Duke University",
+            "type":"Specialization",
+            "img":"https://www.websystemer.no/wp-content/uploads/2020/08/java-fundamentals-part-1.jpg",
+            "ratings":"4.6",
+            "enrollCount":"494K Students",
+            "level":"Beginner"
+        },
+        {
+            "title": "Object Oriented Programming in Java",
+            "university": "Duke University",
+            "type":"Specialization",
+            "img":"https://cdn.educba.com/academy/wp-content/uploads/2019/02/Object-Oriented-Programming-in-Java.jpg",
+            "ratings":"4.3",
+            "enrollCount":"430K Students",
+            "level":"Beginner"
+        },
+        {
+            "title": "Fundamentals of Python",
+            "university": "University of Wolverhamption",
+            "type":"Course",
+            "img":"https://image1.slideserve.com/2582743/python-fundamentals-l.jpg",
+            "ratings":"4.8",
+            "enrollCount":"590K Students",
+            "level":"Beginner"
+        },
+        {
+            "title": "Data Science with Python ",
+            "university": "BYU",
+            "type":"Specialization",
+            "img":"https://nowalabs.com/assets/images/course-single/4.jpg",
+            "ratings":"4.3",
+            "enrollCount":"590K Students",
+            "level":"Intermediate"
+        },
+        {
+            "title": "Data Analyst with Python ",
+            "university": "university of Wolverhamption",
+            "type":"Course",
+            "img":"https://pngimage.net/wp-content/uploads/2018/05/analysing-png-6.png",
+            "ratings":"4.3",
+            "enrollCount":"590K Students",
+            "level":"Beginner"
+        },
+        {
+            "title": "Data Analyst with Python ",
+            "university": "Duke university",
+            "type":"Course",
+            "img":"https://pngimage.net/wp-content/uploads/2018/05/analysing-png-5.png",
+            "ratings":"4.0",
+            "enrollCount":"60K Students",
+            "level":"Beginner"
+        }
+        
+    ]
+}

@@ -1,3 +1,4 @@
+import 'package:InternTask/Bloc/SearchBloc.dart';
 import 'package:InternTask/Models/searchCourse.dart';
 import 'package:InternTask/ServiceProvider/SearchPageProvider.dart';
 import 'package:InternTask/pages/CoursePageDetails.dart';
@@ -11,26 +12,21 @@ class SearchCourse extends StatefulWidget {
 }
 
 class _SearchCourseState extends State<SearchCourse> {
-  Data search;
 
   @override
   void initState() {
     super.initState();
-    SearchPageProvider().getSerchData().then((value) {
-      setState(() {
-        search = value;
-      });
-    });
+   bloc.GetSearchPageData();
   }
 
-  _buildTagWidget() {
+  _buildTagWidget(List<String> topSearch) {
     List<Widget> choices = List();
-    search.topSearch.forEach((element) {
+    topSearch.forEach((element) {
       choices.add(Container(
         child: Wrap(
           children: [
             ActionChip(
-              label: Text(element.title),
+              label: Text(element),
               onPressed: () {
                 print('im action');
               },
@@ -45,33 +41,28 @@ class _SearchCourseState extends State<SearchCourse> {
     return choices;
   }
 
-  Widget getTopSearch() {
-    if (search == null) {
-      return Container();
-    } else {
+  Widget getTopSearch(List<String> topSearch) {
       return Wrap(
-        children: _buildTagWidget(),
+        children: _buildTagWidget(topSearch),
       );
     }
-  }
 
-  Widget getBrowserCategory() {
-    if (search == null) {
-      return Container();
-    } else {
+
+  Widget getBrowserCategory(List<BrowseCat> browseCat) {
+
       return ListView.builder(
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
-          itemCount: search.browseCat.length,
+          itemCount: browseCat.length,
           itemBuilder: (BuildContext ctxt, int index) {
             return ListTile(
               leading: CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.transparent,
-                backgroundImage: NetworkImage(search.browseCat[index].img,scale: 0.3),
+                backgroundImage: NetworkImage(browseCat[index].imageUri,scale: 0.3),
               ),
               title: Text(
-                search.browseCat[index].category,
+                browseCat[index].courseCatagory,
                 style: TextStyle(
                   fontSize: SizeConfig.safeBlockHorizontal * 4,
                 ),
@@ -86,7 +77,7 @@ class _SearchCourseState extends State<SearchCourse> {
               },
             );
           });
-    }
+
   }
 
   Widget build(BuildContext context) {
@@ -129,43 +120,53 @@ class _SearchCourseState extends State<SearchCourse> {
           body: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      'Top Searches',
-                      style: TextStyle(
-                        fontSize: SizeConfig.safeBlockHorizontal * 5,
-                        fontWeight: FontWeight.bold,
+              child: StreamBuilder<SearchCourseModel>(
+                stream: bloc.currentSearchDataData,
+                initialData: null,
+                builder: (context, snapshot) {
+                  print("the initital data is ${snapshot.data}");
+                  if(snapshot.data==null)
+                    return CircularProgressIndicator();
+                  else
+                    return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          'Top Searches',
+                          style: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 5,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: SizeConfig.screenHeight * 0.01,
-                  ),
-                  getTopSearch(),
-                  SizedBox(
-                    height: SizeConfig.screenHeight * 0.03,
-                  ),
-                  Container(
-                    child: Text(
-                      'Browse Categories',
-                      style: TextStyle(
-                        fontSize: SizeConfig.safeBlockHorizontal * 5,
-                        fontWeight: FontWeight.bold,
+                      SizedBox(
+                        height: SizeConfig.screenHeight * 0.01,
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: SizeConfig.screenHeight * 0.01,
-                  ),
-                  getBrowserCategory(),
-                  SizedBox(
-                    height: SizeConfig.screenHeight * 0.01,
-                  ),
-                ],
+                      getTopSearch(snapshot.data.topSearch),
+                      SizedBox(
+                        height: SizeConfig.screenHeight * 0.03,
+                      ),
+                      Container(
+                        child: Text(
+                          'Browse Categories',
+                          style: TextStyle(
+                            fontSize: SizeConfig.safeBlockHorizontal * 5,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.screenHeight * 0.01,
+                      ),
+                      getBrowserCategory(snapshot.data.browseCat),
+                      SizedBox(
+                        height: SizeConfig.screenHeight * 0.01,
+                      ),
+                    ],
+                  );
+                }
               ),
             ),
           ),
